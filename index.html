@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>RecipeBox · Quick Meal Finder</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <h1 class="logo">RecipeBox</h1>
+      <p class="tagline">Type an ingredient you've got, get something to cook.</p>
+
+      <form id="search-form" class="search">
+        <input
+          id="search-input"
+          class="search__input"
+          type="text"
+          placeholder="chicken, tomato, rice…"
+          autocomplete="off"
+          aria-label="Ingredient"
+        />
+        <button class="search__button" type="submit">Search</button>
+      </form>
+    </header>
+
+    <main class="container">
+      <!-- Status line for loading / empty / error messages -->
+      <p id="status" class="status"></p>
+
+      <!-- Results grid (cards get injected here) -->
+      <section id="results" class="grid" aria-live="polite"></section>
+    </main>
+
+    <!-- Recipe details modal (hidden until a card is clicked) -->
+    <div id="modal" class="modal" hidden>
+      <div class="modal__backdrop" data-close></div>
+      <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal__close" data-close aria-label="Close">✕</button>
+        <img id="modal-image" class="modal__image" alt="" />
+        <div class="modal__body">
+          <h2 id="modal-title" class="modal__title"></h2>
+          <p id="modal-meta" class="modal__meta"></p>
+          <p id="modal-instructions" class="modal__instructions"></p>
+          <div id="modal-links" class="modal__links"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      Recipe data from <a href="https://www.themealdb.com" target="_blank" rel="noreferrer">TheMealDB</a>.
+    </footer>
+
+    <!-- Loaded in order: api helpers, then render helpers, then the wiring -->
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
